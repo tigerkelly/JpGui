@@ -1,4 +1,13 @@
-
+## First Character meanings
+## ^ = TitlePane in the Accordion widget.  Not used in this file.
+## & = CheckBox to TitlePane
+## * = TextFiled to TitlePane
+## + = TextField with button to select a file.
+## - = TextField with button to select a directory.
+## @ = TextArea, allows multiple items separated by ; (semicolon).
+## ! = TextArea, allows multiple items selected.
+## % = TextField and button for selecting files and directories.
+##
   *Package Type:--type -t <type>
           The type of package to create
           Valid Windows values are: {"app-image", "exe", "msi"}

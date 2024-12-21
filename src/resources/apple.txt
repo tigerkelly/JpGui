@@ -1,3 +1,25 @@
+## First Character meanings
+## ^ = TitlePane in the Accordion widget.
+## & = CheckBox to TitlePane
+## * = TextFiled to TitlePane
+## + = TextField with button to select a file.
+## - = TextField with button to select a directory.
+## @ = TextField, allows multiple items separated by ; (semicolon).
+## ! = TextArea, allows multiple items selected.
+## % = TextField and button for selecting files and directories.
+##
+^JpGui Options
+  &Jpackage Verbose:--jp-verbose
+          If checked then --verbose is added to the jpackage command line.
+;
+  &Jpackage Version:--jp-version
+          If checked then the jpackage version will be displayed when 
+          script is run.
+;
+  &Java Verbose:-verbose
+          Causes Java to out a lot of data.  Must use --console-win
+          option to be able to see output under Windows.
+;
 ^Generic Options:
   *Package Type:--type -t <type>
           The type of package to create

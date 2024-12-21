@@ -42,6 +42,9 @@ public class OptionsController implements Initializable, RefreshScene {
     @FXML
     private CheckBox chbRemoveAll;
     
+    @FXML
+    private CheckBox cbUseBash;
+    
     private JpGlobal jg = JpGlobal.getInstance();
 
     @FXML
@@ -91,6 +94,10 @@ public class OptionsController implements Initializable, RefreshScene {
     				idx = n;
     		}
     	}
+    	
+    	boolean useBash = cbUseBash.isSelected();
+    	
+    	jg.sysIni.addValuePair("System", "usebash", Boolean.toString(useBash));
     	
     	idx++;
     	
@@ -150,6 +157,9 @@ public class OptionsController implements Initializable, RefreshScene {
 			boolean rmAll = jg.sysIni.getBoolean("System", "removeall");
 			chbRemoveAll.setSelected(rmAll);
 		}
+		
+		jg.useBash = jg.sysIni.getBoolean("System", "usebash");
+		cbUseBash.setSelected(jg.useBash);
 		
 		taUserMods.setText("");
 		Object[] objs = jg.sysIni.getSectionKeys("UserMods");

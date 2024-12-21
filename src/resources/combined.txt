@@ -1,3 +1,13 @@
+## First Character meanings
+## ^ = TitlePane in the Accordion widget.
+## & = CheckBox to TitlePane
+## * = TextFiled to TitlePane
+## + = TextField with button to select a file.
+## - = TextField with button to select a directory.
+## @ = TextArea, allows multiple items separated by ; (semicolon).
+## ! = TextArea, allows multiple items selected.
+## % = TextField and button for selecting files and directories.
+##
 ^JpGui Options
   &Jpackage Verbose:--jp-verbose
           If checked then --verbose is added to the jpackage command line.

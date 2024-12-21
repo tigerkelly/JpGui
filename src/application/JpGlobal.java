@@ -48,7 +48,7 @@ public class JpGlobal {
 	}
 	
 	private void initGlobals() {
-		appVersion = "1.2.2";
+		appVersion = "2.0.0";
 		
 		String os = System.getProperty("os.name").toLowerCase();
 		if (os.contains("win") == true) {
@@ -63,42 +63,17 @@ public class JpGlobal {
 		}
 		
 		String d = System.getProperty("user.home");
-		
-		homeDir = new File(d + File.separator + "JpGui");
+		homeDir = new File(d + File.separator + ".JpGui");
 		
 		if (homeDir.exists() == false) {
 			homeDir.mkdirs();
 		}
 		
-		File f = new File(homeDir.getAbsolutePath() + File.separator + "workspaces.ini");
+//		System.out.println("homeDir: "+ homeDir.getAbsolutePath());
 		
-		if (f.exists() == false) {
-			try {
-				f.createNewFile();
-				
-				try {
-					FileWriter myWriter = new FileWriter(f.getAbsolutePath());
-					myWriter.write("# JpGui Workspaces INI file.\n\n[Workspaces]\n\n");
-					myWriter.write("[Current]\n\tworkspace = \n");
-					
-					myWriter.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+		workspace = new File(homeDir.getAbsolutePath() + File.separator + "ws");
 		
-		wsIni = new IniFile(f.getAbsolutePath());
-		
-		String ws = wsIni.getString("Current", "workspace");
-		if (ws.isBlank() == false)
-			workspace = new File(ws);
-		
-		if (workspace != null) {
-			setupProject();
-		}
+		setupProject();
 		
 		prjList = new HashMap<String, IniFile>();
 		orgList = new HashMap<String, IniFile>();
@@ -141,17 +116,21 @@ public class JpGlobal {
 	public boolean loadFlag = false;
 	public boolean leaveProgram = false;
 	public boolean rmAll = false;
+	public boolean useBash = false;
+	
+	public int WINDOWS = 1;
+	public int LINUX = 2;
+	public int MAC = 3;
 	
 	Alert alert = null;
 	public IniFile sysIni = null;
-	public IniFile wsIni = null;
 	public IniFile currPrj = null;
 	public SceneNav sceneNav = null;
 	public File workDir = null;
 	public File homeDir = null;
-	public File winBaseDir = null;
-	public File linuxBaseDir = null;
-	public File macBaseDir = null;
+	public File baseDir = null;
+//	public File linuxBaseDir = null;
+//	public File macBaseDir = null;
 	public File workspace = null;
 	public int osType = 0;
 	
@@ -194,9 +173,10 @@ public class JpGlobal {
 					myWriter.write("# Jpackage project builder INI file.\n\n[System]\n");
 					myWriter.write("\tjpackage = jpackage\n");
 					myWriter.write("\tmodulepath = \n");
-					myWriter.write("\tWin basedir =\n");
-					myWriter.write("\tLinux basedir =\n");
-					myWriter.write("\tMac basedir =\n\n");
+					myWriter.write("\tbasedir =\n");
+					myWriter.write("\tusebash = false\n");
+//					myWriter.write("\tLinux basedir =\n");
+//					myWriter.write("\tMac basedir =\n\n");
 						
 					myWriter.write("[Projects]\n\n");
 					myWriter.write("[UserMods]\n\n");
@@ -215,17 +195,17 @@ public class JpGlobal {
 		if (jpackagePath == null || jpackagePath.isBlank() == true)
 			jpackagePath = "jpackage";
 		
-		String winBase = sysIni.getString("System", "Win basedir");
-		if (winBase != null)
-			winBaseDir = new File(winBase);
+		String basedir = sysIni.getString("System", "basedir");
+		if (basedir != null)
+			baseDir = new File(basedir);
 		
-		String linuxBase = sysIni.getString("System", "Linux basedir");
-		if (linuxBase != null)
-			linuxBaseDir = new File(linuxBase);
-		
-		String macBase = sysIni.getString("System", "Mac basedir");
-		if (macBase != null)
-			macBaseDir = new File(macBase);
+//		String linuxBase = sysIni.getString("System", "Linux basedir");
+//		if (linuxBase != null)
+//			linuxBaseDir = new File(linuxBase);
+//		
+//		String macBase = sysIni.getString("System", "Mac basedir");
+//		if (macBase != null)
+//			macBaseDir = new File(macBase);
 		
 		if (sysIni.keyExists("System", "removeall") == true)
 			rmAll = sysIni.getBoolean("System", "removeAll");
@@ -303,7 +283,7 @@ public class JpGlobal {
 
 	public ButtonType showAlert(String title, String msg, AlertType alertType, boolean yesNo) {
 		alert = new Alert(alertType);
-		alert.getDialogPane().setPrefWidth(500.0);
+		alert.getDialogPane().setPrefWidth(600.0);
 		for (ButtonType bt : alert.getDialogPane().getButtonTypes()) {
 			Button button = (Button) alert.getDialogPane().lookupButton(bt);
 			if (yesNo == true) {

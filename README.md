@@ -2,12 +2,15 @@
 A GUI program for the jpackage command line program in the Java JDK.<br>
 The jpackage program generates an install program that contains the Java runtime for your application.
 
+A major change and is not compatible with versions lower than 2.0.0.<br>
+I decided to not allow different platforms to be created/edited on any one system.<br>
+It was very difficult to manage the different platforms and I think it may have confused the users.
+
 This GUI program will help you to manage jpackage projects for each of you applications and platforms.
 
 Some of the features are:
 
 - Can have multiple projects open at once.
-- Can have as many workspaces as needed.
 - Can manage all three platforms with one GUI. The platforms are Windows, Linux (like) and Apple Mac
 - Each option has a help button.
 - A 'New Project Wizard' to help you get started with a project.
@@ -31,10 +34,10 @@ You can also generate both Windows and Linux like script as seen below.
 
 ![jpgui image of batch script](src/images/jpgui_script.png?raw=true)
 
-When the program starts it creates a new directory called JpGui in your home directory.
+When the program starts it creates a new directory called .JpGui in your home directory.
 
-The JpGui directory contains the jpgui.ini file and another directory called '**projects**'.<br>
-The jpgui.ini file contains program information and the '**projects**' directory contains a directory for each project created.<br>
+The .JpGui directory contains the jpgui.ini file and another directory called '**ws**'.<br>
+The jpgui.ini file contains program information and the '**ws**' directory contains a directory for each project created.<br>
 This program can also generate script to run the jpackage command at the command line.
 
 You can create scripts for both Windows and Linux on either the Windows platform or Linux platform.

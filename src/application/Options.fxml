@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="aPane" prefWidth="600.0" xmlns="http://javafx.com/javafx/1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OptionsController">
+<AnchorPane fx:id="aPane" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OptionsController">
    <children>
       <VBox spacing="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -28,7 +28,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="4.0">
                <children>
-                  <Label prefWidth="150.0" text="Jpackage Path:">
+                  <Label prefWidth="160.0" text="Jpackage Path:">
                      <font>
                         <Font name="SansSerif Bold" size="18.0" />
                      </font>
@@ -59,7 +59,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="4.0">
                <children>
-                  <Label prefWidth="150.0" text="Module Path:">
+                  <Label prefWidth="160.0" text="Module Path:">
                      <font>
                         <Font name="SansSerif Bold" size="18.0" />
                      </font>
@@ -84,12 +84,12 @@
             </HBox>
             <HBox spacing="4.0">
                <children>
-                  <Label prefWidth="150.0" text="User Modules:">
+                  <Label prefWidth="160.0" text="User Modules:">
                      <font>
                         <Font name="SansSerif Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="taUserMods" prefHeight="200.0" prefWidth="400.0">
+                  <TextArea fx:id="taUserMods" prefHeight="150.0" prefWidth="400.0">
                      <tooltip>
                         <Tooltip text="One module per line.">
                            <font>
@@ -111,7 +111,7 @@
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>
                <children>
-                  <Region prefWidth="150.0" />
+                  <Region prefWidth="160.0" />
                   <CheckBox fx:id="chbRemoveAll" mnemonicParsing="false" selected="true" text="Remove old install programs">
                      <font>
                         <Font name="SansSerif Bold" size="16.0" />
@@ -121,6 +121,19 @@
                      </tooltip>
                   </CheckBox>
                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="4.0">
+               <children>
+                  <Region prefWidth="160.0" />
+                  <CheckBox fx:id="cbUseBash" mnemonicParsing="false" text="Use Bash instead of sh.">
+                     <font>
+                        <Font name="SansSerif Bold" size="16.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER" spacing="4.0">
                <children>

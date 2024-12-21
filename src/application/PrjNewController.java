@@ -59,7 +59,7 @@ public class PrjNewController implements Initializable, RefreshScene {
     	
     	jg.sysIni.addValuePair("Projects", prjName, prjDesc);
     	
-    	File f1 = new File(System.getProperty("user.home") + File.separator + "JpGui" + File.separator +
+    	File f1 = new File(System.getProperty("user.home") + File.separator + ".JpGui" + File.separator +
     					"projects" + File.separator + prjName);
     	if (f1.exists() == false) {
     		f1.mkdirs();
@@ -76,77 +76,77 @@ public class PrjNewController implements Initializable, RefreshScene {
 			}
     	}
     	
-    	File iWin = new File(System.getProperty("user.home") + File.separator + "JpGui" + File.separator +
-				"projects" + File.separator + prjName + File.separator + "win-in");
-    	if (iWin.exists() == false)
-    		iWin.mkdirs();
+    	File in = new File(System.getProperty("user.home") + File.separator + ".JpGui" + File.separator +
+				"projects" + File.separator + prjName + File.separator + "in");
+    	if (in.exists() == false)
+    		in.mkdirs();
     	
-    	File keepDir = new File(iWin.getAbsolutePath() + File.separator + ".keepdir");
+    	File keepDir = new File(in.getAbsolutePath() + File.separator + ".keepdir");
     	try {
 			keepDir.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
     	
-    	File oWin = new File(System.getProperty("user.home") + File.separator + "JpGui" + File.separator +
+    	File out = new File(System.getProperty("user.home") + File.separator + ".JpGui" + File.separator +
 				"projects" + File.separator + prjName + File.separator + "win-out");
-    	if (oWin.exists() == false)
-    		oWin.mkdirs();
+    	if (out.exists() == false)
+    		out.mkdirs();
     	
-    	keepDir = new File(oWin.getAbsolutePath() + File.separator + ".keepdir");
+    	keepDir = new File(out.getAbsolutePath() + File.separator + ".keepdir");
     	try {
 			keepDir.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
     	
-    	File iLinux = new File(System.getProperty("user.home") + File.separator + "JpGui" + File.separator +
-				"projects" + File.separator + prjName + File.separator + "linux-in");
-    	if (iLinux.exists() == false)
-    		iLinux.mkdirs();
-    	
-    	keepDir = new File(iLinux.getAbsolutePath() + File.separator + ".keepdir");
-    	try {
-			keepDir.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
-    	File oLinux = new File(System.getProperty("user.home") + File.separator + "JpGui" + File.separator +
-				"projects" + File.separator + prjName + File.separator + "linux-out");
-    	if (oLinux.exists() == false)
-    		oLinux.mkdirs();
-    	
-    	keepDir = new File(oLinux.getAbsolutePath() + File.separator + ".keepdir");
-    	try {
-			keepDir.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
-    	File iMac = new File(System.getProperty("user.home") + File.separator + "JpGui" + File.separator +
-				"projects" + File.separator + prjName + File.separator + "mac-in");
-    	if (iMac.exists() == false)
-    		iMac.mkdirs();
-    	
-    	keepDir = new File(iMac.getAbsolutePath() + File.separator + ".keepdir");
-    	try {
-			keepDir.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
-    	File oMac = new File(System.getProperty("user.home") + File.separator + "JpGui" + File.separator +
-				"projects" + File.separator + prjName + File.separator + "mac-out");
-    	if (oMac.exists() == false)
-    		oMac.mkdirs();
-    	
-    	keepDir = new File(oMac.getAbsolutePath() + File.separator + ".keepdir");
-    	try {
-			keepDir.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//    	File iLinux = new File(System.getProperty("user.home") + File.separator + ".JpGui" + File.separator +
+//				"projects" + File.separator + prjName + File.separator + "linux-in");
+//    	if (iLinux.exists() == false)
+//    		iLinux.mkdirs();
+//    	
+//    	keepDir = new File(iLinux.getAbsolutePath() + File.separator + ".keepdir");
+//    	try {
+//			keepDir.createNewFile();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//    	
+//    	File oLinux = new File(System.getProperty("user.home") + File.separator + ".JpGui" + File.separator +
+//				"projects" + File.separator + prjName + File.separator + "linux-out");
+//    	if (oLinux.exists() == false)
+//    		oLinux.mkdirs();
+//    	
+//    	keepDir = new File(oLinux.getAbsolutePath() + File.separator + ".keepdir");
+//    	try {
+//			keepDir.createNewFile();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//    	
+//    	File iMac = new File(System.getProperty("user.home") + File.separator + ".JpGui" + File.separator +
+//				"projects" + File.separator + prjName + File.separator + "mac-in");
+//    	if (iMac.exists() == false)
+//    		iMac.mkdirs();
+//    	
+//    	keepDir = new File(iMac.getAbsolutePath() + File.separator + ".keepdir");
+//    	try {
+//			keepDir.createNewFile();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//    	
+//    	File oMac = new File(System.getProperty("user.home") + File.separator + ".JpGui" + File.separator +
+//				"projects" + File.separator + prjName + File.separator + "mac-out");
+//    	if (oMac.exists() == false)
+//    		oMac.mkdirs();
+//    	
+//    	keepDir = new File(oMac.getAbsolutePath() + File.separator + ".keepdir");
+//    	try {
+//			keepDir.createNewFile();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
     	
     	IniFile prjIni = new IniFile(prjIniFile.getAbsolutePath());
     	

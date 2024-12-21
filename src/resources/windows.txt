@@ -1,7 +1,30 @@
-^Generic Options:
+## First Character meanings
+## ^ = TitlePane in the Accordion widget.
+## & = CheckBox to TitlePane
+## * = TextFiled to TitlePane
+## + = TextField with button to select a file.
+## - = TextField with button to select a directory.
+## @ = TextArea, allows multiple items separated by ; (semicolon).
+## ! = TextArea, allows multiple items selected.
+## % = TextField and button for selecting files and directories.
+## ? = TextField with option to delete or add more.
+##
+^JpGui Options
+  &Jpackage Verbose:--jp-verbose
+          If checked then --verbose is added to the jpackage command line.
+;
+  &Jpackage Version:--jp-version
+          If checked then the jpackage version will be displayed when 
+          script is run.
+;
+  &Java Verbose:-verbose
+          Causes Java to out a lot of data.  Must use --console-win
+          option to be able to see output under Windows.
+;
+^Generic Options
   *Package Type:--type -t <type>
           The type of package to create
-          Valid values are: {"app-image", "rpm", "deb"}
+          Valid values are: {"app-image", "exe", "msi"}
           If this option is not specified a platform dependent
           default type will be created.
 ;
@@ -18,7 +41,7 @@
           Path of the icon of the application package
           (absolute path or relative to the current directory)
 ;
-  *Name:--name -n <name>
+  *App Name:--name -n <name>
           Name of the application and/or package
 ;
   -Destination:--dest -d <destination path>
@@ -48,7 +71,7 @@
           This option can be used multiple times.
 ;
   -Module Path:--module-path -p <module path>...
-          A : separated list of paths
+          A ; separated list of paths
           Each path is either a directory of modules or the path to a
           modular jar.
           (Each path is absolute or relative to the current directory.)
@@ -109,6 +132,7 @@
 ;
   *Main Class:--main-class <class name>
           Qualified name of the application main class to execute
+          This option can only be used if --main-jar is specified.
 ;
   +Main Jar:--main-jar <main jar file>
           The main JAR of the application; containing the main class
@@ -122,6 +146,11 @@
           When this option is specified, the main module will be linked
           in the Java runtime image.  Either --module or --main-jar
           option can be specified but not both.
+;
+^Platform Dependent Launcher Options
+  &Win Console:--win-console
+          Creates a console launcher for the application, should be
+          specified for application which requires console interactions
 ;
 ^Application Package Options
   *About URL:--about-url <url>
@@ -140,7 +169,7 @@
           This option can be used multiple times.
 ;
   -Install Dir:--install-dir <directory path>
-          Absolute path of the installation directory of the application
+          Relative sub-path under the default installation location
 ;
   +License File:--license-file <file path>
           Path to the license file
@@ -162,29 +191,32 @@
           application launcher as a background service-type application.
 ;
 ^Platform Dependent Package Options
-  *Package Name:--linux-package-name <package name>
-          Name for Linux package, defaults to the application name
+  &Dir Chooser:--win-dir-chooser
+          Adds a dialog to enable the user to choose a directory in which
+          the product is installed.
 ;
-  *Deb Maintainer:--linux-deb-maintainer <email address>
-          Maintainer for .deb package
+  *Help URL:--win-help-url <url>
+          URL where user can obtain further information or technical support
 ;
-  *Menu Group:--linux-menu-group <menu-group-name>
-          Menu group this application is placed in
+  &Menu:--win-menu
+          Request to add a Start menu shortcut for this application
 ;
-  &Package Deps:--linux-package-deps
-          Required packages or capabilities for the application
+  &Menu Group:--win-menu-group <menu group name>
+          Start Menu group this application is placed in
 ;
-  *RPM License Type:--linux-rpm-license-type <type string>
-          Type of the license ("License: <value>" of the RPM .spec)
+  &Per User Install:--win-per-user-install
+          Request to perform an install on a per-user basis
 ;
-  *App Release:--linux-app-release <release value>
-          Release value of the RPM <name>.spec file or
-          Debian revision value of the DEB control file
+  &Shortcut:--win-shortcut
+          Request to add desktop shortcut for this application
 ;
-  *App Category:--linux-app-category <category value>
-          Group value of the RPM <name>.spec file or
-          Section value of DEB control file
+  &Shortcut Prompt:--win-shortcut-prompt
+          Adds a dialog to enable the user to choose if shortcuts
+          will be created by installer.
 ;
-  &Shortcut:--linux-shortcut
-          Creates a shortcut for the application.
+  *Update URL:--win-update-url <url>
+          URL of available application update information
+;
+  *Upgrade UUID:--win-upgrade-uuid <id string>
+          UUID associated with upgrades for this package
 ;

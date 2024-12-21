@@ -60,7 +60,6 @@ public class PrjNewWizardController implements Initializable, RefreshScene {
     private Popup popup = null;
     private DirectoryChooser dc = null;
     private FileChooser fc = null;
-//    private TextField tfMainJar = null;
     
     private TextField packageType = null;
     private TextField appVersion = null;
@@ -114,66 +113,22 @@ public class PrjNewWizardController implements Initializable, RefreshScene {
 			}
     	}
     	
-    	File iWin = new File(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "win-in");
-    	if (iWin.exists() == false)
-    		iWin.mkdirs();
+    	File in = new File(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "in");
+    	if (in.exists() == false)
+    		in.mkdirs();
     	
-    	File keepDir = new File(iWin.getAbsolutePath() + File.separator + ".keepdir");
+    	File keepDir = new File(in.getAbsolutePath() + File.separator + ".keepdir");
     	try {
 			keepDir.createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
     	
-    	File oWin = new File(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "win-out");
-    	if (oWin.exists() == false)
-    		oWin.mkdirs();
+    	File out = new File(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "out");
+    	if (out.exists() == false)
+    		out.mkdirs();
     	
-    	keepDir = new File(oWin.getAbsolutePath() + File.separator + ".keepdir");
-    	try {
-			keepDir.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
-    	File iLinux = new File(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "linux-in");
-    	if (iLinux.exists() == false)
-    		iLinux.mkdirs();
-    	
-    	keepDir = new File(iLinux.getAbsolutePath() + File.separator + ".keepdir");
-    	try {
-			keepDir.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
-    	File oLinux = new File(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "linux-out");
-    	if (oLinux.exists() == false)
-    		oLinux.mkdirs();
-    	
-    	keepDir = new File(oLinux.getAbsolutePath() + File.separator + ".keepdir");
-    	try {
-			keepDir.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
-    	File iMac = new File(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "mac-in");
-    	if (iMac.exists() == false)
-    		iMac.mkdirs();
-    	
-    	keepDir = new File(iMac.getAbsolutePath() + File.separator + ".keepdir");
-    	try {
-			keepDir.createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
-    	File oMac = new File(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "mac-out");
-    	if (oMac.exists() == false)
-    		oMac.mkdirs();
-    	
-    	keepDir = new File(oMac.getAbsolutePath() + File.separator + ".keepdir");
+    	keepDir = new File(out.getAbsolutePath() + File.separator + ".keepdir");
     	try {
 			keepDir.createNewFile();
 		} catch (IOException e) {
@@ -184,13 +139,13 @@ public class PrjNewWizardController implements Initializable, RefreshScene {
     	
     	IniFile prjIni = new IniFile(prjIniFile.getAbsolutePath());
     	
-    	String os = "Unknown ";
-    	if (jg.osType == 1)
-    		os = "Win ";
-    	else if (jg.osType == 2)
-    		os = "Linux ";
-    	else if (jg.osType == 3)
-    		os = "Mac ";
+//    	String os = "Unknown ";
+//    	if (jg.osType == 1)
+//    		os = "Win ";
+//    	else if (jg.osType == 2)
+//    		os = "Linux ";
+//    	else if (jg.osType == 3)
+//    		os = "Mac ";
     	
     	prjIni.addSection("JpGui Options");
     	prjIni.addSection("Generic Options");
@@ -202,77 +157,67 @@ public class PrjNewWizardController implements Initializable, RefreshScene {
     	prjIni.addSection("Platform Dependent Package Options");
     	
     	if (packageType != null)
-    		prjIni.addValuePair("Generic Options", os + "Package Type", packageType.getText());
+    		prjIni.addValuePair("Generic Options", "Package Type", packageType.getText());
     	else
     		System.out.println("packagetype");
     	if (appVersion != null)
-    		prjIni.addValuePair("Generic Options", os + "App Version", appVersion.getText());
+    		prjIni.addValuePair("Generic Options", "App Version", appVersion.getText());
     	else
     		System.out.println("addversino");
     	if (copyright != null)
-    		prjIni.addValuePair("Generic Options", os + "Copyright", copyright.getText());
+    		prjIni.addValuePair("Generic Options", "Copyright", copyright.getText());
     	else
     		System.out.println("copyrioght");
     	if (description != null)
-    		prjIni.addValuePair("Generic Options", os + "Description", description.getText());
+    		prjIni.addValuePair("Generic Options", "Description", description.getText());
     	else
     		System.out.println("desc");
     	if (appName != null)
-    		prjIni.addValuePair("Generic Options", os + "App Name", appName.getText());
+    		prjIni.addValuePair("Generic Options", "App Name", appName.getText());
     	else
     		System.out.println("appanem");
     	if (vendor != null)
-    		prjIni.addValuePair("Generic Options", os + "Vendor", vendor.getText());
+    		prjIni.addValuePair("Generic Options", "Vendor", vendor.getText());
     	else
     		System.out.println("vendor");
     	if (addModules != null)
-    		prjIni.addValuePair("Runtime Image Options", os + "Add Modules", addModules.getText());
+    		prjIni.addValuePair("Runtime Image Options", "Add Modules", addModules.getText());
     	else
     		System.out.println("addmodules");
     	if (destination != null)
-    		prjIni.addValuePair("Generic Options", os + "Destination", destination.getText());
+    		prjIni.addValuePair("Generic Options", "Destination", destination.getText());
     	else
     		System.out.println("destination");
     	if (input != null)
-    		prjIni.addValuePair("Application Image Options", os + "Input", input.getText());
+    		prjIni.addValuePair("Application Image Options", "Input", input.getText());
     	else
     		System.out.println("input");
     	if (icon != null)
-    		prjIni.addValuePair("Generic Options", os + "Icon", icon.getText());
+    		prjIni.addValuePair("Generic Options", "Icon", icon.getText());
     	else
     		System.out.println("icon");
     	if (modulePath != null)
-    		prjIni.addValuePair("Runtime Image Options", os + "Module Path", modulePath.getText());
+    		prjIni.addValuePair("Runtime Image Options", "Module Path", modulePath.getText());
     	else
     		System.out.println("modulepath");
     	if (mainClass != null)
-    		prjIni.addValuePair("Runtime Image Options", os + "Main Class", mainClass.getText());
+    		prjIni.addValuePair("Application Launcher(s) Options", "Main Class", mainClass.getText());
     	else
     		System.out.println("mainclass");
     	if (mainJar != null)
-    		prjIni.addValuePair("Runtime Image Options", os + "Main Jar", mainJar.getText());
+    		prjIni.addValuePair("Application Launcher(s) Options", "Main Jar", mainJar.getText());
     	else
     		System.out.println("mainjar");
     	if (shortcut != null)
-    		prjIni.addValuePair("Platform Dependent Package Options", os + "Shortcut", shortcut.isSelected() + "");
+    		prjIni.addValuePair("Platform Dependent Package Options", "Shortcut", shortcut.isSelected() + "");
     	else
-    		System.out.println("shortcurt");
+    		System.out.println("shortcut");
     	
-    	if (jg.osType == 1)
-    		prjIni.addValuePair("Generic Options", os + "Destination", oWin.getAbsolutePath());
-    	else if (jg.osType == 2)
-    		prjIni.addValuePair("Generic Options", os + "Destination", oLinux.getAbsolutePath());
-    	else if (jg.osType == 3)
-    		prjIni.addValuePair("Generic Options", os + "Destination", oMac.getAbsolutePath());
+    	prjIni.addValuePair("Generic Options", "Destination", out.getAbsolutePath());
     	
-    	if (jg.osType == 1)
-    		prjIni.addValuePair("Application Image Options", os + "Input", iWin.getAbsolutePath());
-    	else if (jg.osType == 1)
-    		prjIni.addValuePair("Application Image Options", os + "Input", iLinux.getAbsolutePath());
-    	else if (jg.osType == 1)
-    		prjIni.addValuePair("Application Image Options", os + "Input", iMac.getAbsolutePath());
+    	prjIni.addValuePair("Application Image Options", "Input", in.getAbsolutePath());
     	
-    	prjIni.addValuePair("JpGui Options", os + "Jpackage Version", "true");
+    	prjIni.addValuePair("JpGui Options", "Jpackage Version", "true");
     	
     	prjIni.writeFile(true);
     	
@@ -310,6 +255,8 @@ public class PrjNewWizardController implements Initializable, RefreshScene {
 			if (newValue != null) {
 				if (mainJar != null) {
 		        	mainJar.setText(newValue.toLowerCase() + ".jar");
+		        	input.setText(jg.workDir.getAbsolutePath() + File.separator + newValue + File.separator	+ "in");
+		        	destination.setText(jg.workDir.getAbsolutePath() + File.separator + newValue + File.separator	+ "in");
 		        }
 			}
 		});
@@ -337,14 +284,6 @@ public class PrjNewWizardController implements Initializable, RefreshScene {
 		
 		String prjName = tfProjectName.getText();
 		
-		File f1 = new File(jg.workDir.getAbsolutePath() + File.separator + prjName);
-    	if (f1.exists() == false) {
-    		f1.mkdirs();
-    	}
-//    	File prjIniFile = new File(f1.getAbsolutePath() + File.separator + prjName + ".ini");
-		
-//		IniFile prjIni = new IniFile(prjIniFile.getAbsolutePath());
-		
 		popup.getContent().add(ta);
 		
 		HBox hb = null;
@@ -368,7 +307,7 @@ public class PrjNewWizardController implements Initializable, RefreshScene {
 				CheckBox ckb = null;
 				
 				String[] arr = line.split(":");
-				String prompt = arr[0].substring(1);
+				String prompt = arr[0].substring(1);	// skip dash
 				
 				Label lbl = new Label(prompt + ":");
 				lbl.setUserData(prompt);
@@ -445,20 +384,10 @@ public class PrjNewWizardController implements Initializable, RefreshScene {
 					HBox.setHgrow(tf, Priority.ALWAYS);
 					
 					if (lbl.getText().equals("Input:") == true) {
-						if (jg.osType == 1)
-							tf.setText(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator	+ "win-in");
-						else if (jg.osType == 2)
-							tf.setText(jg.workDir.getAbsolutePath().replaceAll("\\", "/") + "/" + prjName + "/"	+ "linux-in");
-						else if (jg.osType == 3)
-							tf.setText(jg.workDir.getAbsolutePath().replaceAll("\\", "/") + "/" + prjName + "/"	+ "mac-in");
+						tf.setText(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator	+ "in");
 						input = tf;
 					} else if (lbl.getText().equals("Destination:") == true) {
-						if (jg.osType == 1)
-				    		tf.setText(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "win-out");
-				    	else if (jg.osType == 2)
-				    		tf.setText(jg.workDir.getAbsolutePath().replaceAll("\\", "/") + "/" + prjName + "/"+ "linux-out");
-				    	else if (jg.osType == 3)
-				    		tf.setText(jg.workDir.getAbsolutePath().replaceAll("\\", "/") + "/" + prjName + "/"+ "mac-out");
+						tf.setText(jg.workDir.getAbsolutePath() + File.separator + prjName + File.separator + "out");
 						destination = tf;
 					}
 					
